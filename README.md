@@ -6,4 +6,5 @@ Used this script to grab approximately 1000 stocks and the total allotted time c
 Do note I ran this on a gaming computer on a Gigabit ethernet connection. Further optimizations can be made with
 string concatenations perhaps.
 
+To do:
 Find a way to make an executable.
