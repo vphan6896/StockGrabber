@@ -131,3 +131,6 @@ dmypy.json
 #user_files
 secret
 Symbols.txt
+Symbols1.txt
+Farn.txt
+*.zip

@@ -5,7 +5,7 @@ import time
 
 def main():
     startTime = time.process_time()
-    symbolsfile = open("Symbols.txt", "r")
+    symbolsfile = open("Farn.txt", "r")
     secretfile = open("secret", "r")
     secret = secretfile.readline()
     secretfile.close()
@@ -19,13 +19,19 @@ def main():
     #Convert list to string separated by commas
     symbolsCat = ','.join(symbols)
 
+    for symbol in symbols:
+        #https://financialmodelingprep.com/api/v3/historical-chart/1min/AAPL?apikey=
+        #response = requests.get("https://financialmodelingprep.com/api/v3/profile/"+ symbolsCat + "?apikey=" + secret)
+        response = requests.get("https://financialmodelingprep.com/api/v3/historical-chart/1min/" + symbol + "?apikey=" + secret)
+        with open (symbol+'output.json', 'w') as outputfile:
+            json.dump(response.json(), outputfile, indent=4, sort_keys=True)
+        #print(response.json())
 
-    response = requests.get("https://financialmodelingprep.com/api/v3/profile/"+ symbolsCat + "?apikey=" + secret)
-    #print(response.json())
+    
 
 
-    with open ('output.json', 'w') as outputfile:
-        json.dump(response.json(), outputfile, indent=4, sort_keys=True)
+    #with open (+'output.json', 'w') as outputfile:
+    #    json.dump(response.json(), outputfile, indent=4, sort_keys=True)
 
     print("--- %.2f seconds ---" % (time.process_time() - startTime))
     input("Press Enter to continue...")
