@@ -130,4 +130,8 @@ dmypy.json
 
 #user_files
 secret
-Symbols.txt
+*.txt
+*.json
+*.zip
+Executable/
+.idea/
