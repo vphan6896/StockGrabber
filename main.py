@@ -1,6 +1,8 @@
 import requests
 import json
 import time
+import os
+import datetime
 
 
 def main():
@@ -9,6 +11,13 @@ def main():
     secretfile = open("secret", "r")
     secret = secretfile.readline()
     secretfile.close()
+
+    #Use this for naming directory
+    now = datetime.datetime.now()
+    timeString = now.strftime('%m-%d-%Y__%H_%M')
+    print("Current time is: " + timeString)
+    os.mkdir("./" + timeString)
+    dumpdir = os.path.join("./", timeString)
 
     # readlines() also reads the newline character in the textfile
     # This method doesn't need to strip the newline characters
@@ -23,7 +32,7 @@ def main():
         #https://financialmodelingprep.com/api/v3/historical-chart/1min/AAPL?apikey=
         #response = requests.get("https://financialmodelingprep.com/api/v3/profile/"+ symbolsCat + "?apikey=" + secret)
         response = requests.get("https://financialmodelingprep.com/api/v3/historical-chart/1min/" + symbol + "?apikey=" + secret)
-        with open (symbol+'output.json', 'w') as outputfile:
+        with open (dumpdir + "\\" + symbol + ".json", 'w') as outputfile:
             json.dump(response.json(), outputfile, indent=4, sort_keys=True)
         #print(response.json())
 
