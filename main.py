@@ -14,7 +14,7 @@ def main():
 
     #Use this for naming directory
     now = datetime.datetime.now()
-    timeString = now.strftime('%m-%d-%Y__%H_%M')
+    timeString = now.strftime('%m-%d-%Y')
     print("Current time is: " + timeString)
     os.mkdir("./" + timeString)
     dumpdir = os.path.join("./", timeString)
@@ -48,4 +48,3 @@ def main():
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     main()
-
