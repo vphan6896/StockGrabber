@@ -3,7 +3,7 @@ import json
 import time
 import os
 import datetime
-
+import tickerAdd
 
 def main():
     startTime = time.process_time()
@@ -36,11 +36,8 @@ def main():
             json.dump(response.json(), outputfile, indent=4, sort_keys=True)
         #print(response.json())
 
-    
+    tickerAdd.tickerAdd(dumpdir)
 
-
-    #with open (+'output.json', 'w') as outputfile:
-    #    json.dump(response.json(), outputfile, indent=4, sort_keys=True)
 
     print("--- %.2f seconds ---" % (time.process_time() - startTime))
     input("Press Enter to continue...")
